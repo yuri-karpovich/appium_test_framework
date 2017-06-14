@@ -25,35 +25,34 @@ Given(/^Android emulator started$/) do
   expect(version_number).to eq '5.3.1'
 end
 
-And(/^I am on the (.*)/) do |page|
+And(/^I am on the (\w+)/) do |page|
   @page = Kernel.const_get(page)
   @page.displayed?
 end
 
-And(/^I click (.*) if it's on the screen$/) do |button|
+And(/^I click (\w+) if it's on the screen$/) do |button|
   @page.send("#{button}_element").click if @page.send("#{button}_element?")
 end
 
-When(/^I click (.*) element$/) do |button|
+When(/^I click (\w+) element$/) do |button|
   @page.send("#{button}_element").click
 end
 
-When(/^I click random element from the (.*)/) do |collection_name|
+When(/^I click random element from the (\w+)/) do |collection_name|
   @page.send(collection_name).sample.click
 end
 
-Then(/^I see the (.*)/) do |page|
+Then(/^I see the (\w+)/) do |page|
   @page = Kernel.const_get(page)
   @page.displayed?
 end
 
-And(/^I go to the (.*)$/) do |page|
+And(/^I go to the (\w+)$/) do |page|
   @page = Kernel.const_get(page)
   @page.goto
 end
 
-And(/^I remember (.*) on (.*) as '(.*)'$/) do |method_name, page_name, key|
-  @page            = Kernel.const_get(page_name)
+And(/^I remember (\w+) as '(.*)'$/) do |method_name, key|
   @remembered[key] = @page.send(method_name)
 end
 
@@ -78,4 +77,5 @@ end
 And(/^I remember episode number of Show with remembered title '(.*)' as '(.*)'$/) do |text, key|
   text_locator = @remembered[text]
   @remembered[key] = ShowsPage.episode_number(text_locator)
+  puts @remembered
 end
