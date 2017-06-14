@@ -38,11 +38,8 @@ Feature: Statistics functionality
     Then I go to the ShowsPage
     When I click Show with remembered title 'selected show'
     Then I am on the ShowInfoPage
-#    And I remember episode_number on ShowInfoPage as 'season number'
     And I click set_watched_button element
     When I go to the StatisticsPage
     And I remember watched_episodes_count on StatisticsPage as 'new episodes number'
     Then 'new episodes number' should not be '0'
     And 'new episodes number' should be bigger than 'initial episodes number' by 1
-
-
