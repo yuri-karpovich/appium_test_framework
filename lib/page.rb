@@ -31,6 +31,10 @@ module Page
         driver.find_elements(locators)
       end
 
+      define_singleton_method "#{name}_locators" do
+        locators
+      end
+
       define_singleton_method "#{name}_element?" do
         element = send "#{name}_element"
         wait.until { element.displayed? }

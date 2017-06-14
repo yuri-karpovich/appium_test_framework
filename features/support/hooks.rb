@@ -16,7 +16,7 @@ Before '@appium' do |scenario|
   Page::ClassMethods.driver         = @driver
   @wait                             = @driver_wrapper.wait
   Page::ClassMethods.wait           = @wait
-  @clicks_collection                = {}
+  @remembered                       = {}
 end
 
 After do

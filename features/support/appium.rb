@@ -38,7 +38,7 @@ class AppiumDriver
 
     # two different ways to wait
     @driver.start_driver.manage.timeouts.implicit_wait = 10
-    @wait                                              = Selenium::WebDriver::Wait.new :timeout => 20
+    @wait                                              = Selenium::WebDriver::Wait.new :timeout => 30
   end
 
   def teardown # kill driver at the end of the test

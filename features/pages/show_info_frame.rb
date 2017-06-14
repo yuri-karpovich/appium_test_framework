@@ -9,9 +9,7 @@ class ShowInfoFrame
   element(:title, id: 'com.battlelancer.seriesguide:id/textViewAddTitle')
   element(:image, id: 'com.battlelancer.seriesguide:id/imageViewAddPoster')
 
-  def self.show_data
-    {
-      title: title_element.text
-    }
+  def self.show_title
+    title_element.text
   end
 end

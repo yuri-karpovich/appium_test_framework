@@ -38,7 +38,7 @@ When(/^I click (.*) element$/) do |button|
   @page.send("#{button}_element").click
 end
 
-When(/^I click (.*) element from the (.*)/) do |click_identifier, collection_name|
+When(/^I click random element from the (.*)/) do |collection_name|
   @page.send(collection_name).sample.click
 end
 
@@ -52,10 +52,25 @@ And(/^I go to the (.*)$/) do |page|
   @page.goto
 end
 
-And(/^I read selected show data$/) do
-  @show_info = @page.show_data
+And(/^I remember (.*) on (.*) as '(.*)'$/) do |method_name, page_name, key|
+  @page            = Kernel.const_get(page_name)
+  @remembered[key] = @page.send(method_name)
 end
 
-Then(/^Newly added show should be displayed in My Shows List$/) do
-  expect(@page.my_shows_titles).to include(@show_info[:title])
+Then(/^'(.*)' should include '(.*)'$/) do |attr1, attr2|
+  expect(@remembered[attr1]).to include(@remembered[attr2])
+end
+
+Then(/^'(.*)' should be bigger than '(.*)' by (\d+)$/) do |attr1, attr2, diff|
+  expect(@remembered[attr1].to_i).to eq(@remembered[attr2].to_i + 1)
+end
+
+Then(/^'(.*)' should not be (.*)$/) do |attr1, value|
+  expect(@remembered[attr1]).not_to eq(value)
+
+end
+
+When(/^I click Show with remembered title '(.*)'$/) do |text|
+  text_locator = @remembered[text]
+  ShowsPage.show_with_title(text_locator).click
 end
