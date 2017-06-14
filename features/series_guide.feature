@@ -7,10 +7,12 @@ Feature: Shows management
     When I click add_show_button element
     Then I am on the AddShowPage
     When I click random movie element from the shows_cards_collection
-    Then I see ShowPreviewDialog
-    When I click add_show button on the ShowPreviewDialog
-    And I go to the ShowsPage via main menu
-    Then I see selected show title on the screen
+    Then I see the ShowInfoFrame
+    And I read selected show data
+    When I click add_show_button element
+    Then I am on the AddShowPage
+    And I go to the ShowsPage
+    Then Newly added show should be displayed in My Shows List
 
 
 

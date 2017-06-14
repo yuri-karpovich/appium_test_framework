@@ -10,12 +10,13 @@ Before '@appium' do |scenario|
   app_path = ENV['APP_PATH']
   raise "You should provide a path to the apk file in ENV['APP_PATH']" unless app_path
 
-  @driver_wrapper           = AppiumDriver.new(platform_name, deviceName: device, app: app_path)
-  @driver                   = @driver_wrapper.driver
-  Page::ClassMethods.driver = @driver
-  @wait                     = @driver_wrapper.wait
-  Page::ClassMethods.wait   = @wait
-  @clicks_collection        = {}
+  @driver_wrapper                   = AppiumDriver.new(platform_name, deviceName: device, app: app_path)
+  Page::ClassMethods.driver_wrapper = @driver_wrapper
+  @driver                           = @driver_wrapper.driver
+  Page::ClassMethods.driver         = @driver
+  @wait                             = @driver_wrapper.wait
+  Page::ClassMethods.wait           = @wait
+  @clicks_collection                = {}
 end
 
 After do

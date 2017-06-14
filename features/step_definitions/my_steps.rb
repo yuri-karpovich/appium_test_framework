@@ -39,12 +39,23 @@ When(/^I click (.*) element$/) do |button|
 end
 
 When(/^I click (.*) element from the (.*)/) do |click_identifier, collection_name|
-  element                              = @page.send(collection_name).sample
-  @clicks_collection[click_identifier] = element
-  element.click
+  @page.send(collection_name).sample.click
 end
 
-Then(/^I see ShowPreviewDialog$/) do
-  # @page = Kernel.const_get(page)
-  # @page.displayed?
+Then(/^I see the (.*)/) do |page|
+  @page = Kernel.const_get(page)
+  @page.displayed?
+end
+
+And(/^I go to the (.*)$/) do |page|
+  @page = Kernel.const_get(page)
+  @page.goto
+end
+
+And(/^I read selected show data$/) do
+  @show_info = @page.show_data
+end
+
+Then(/^Newly added show should be displayed in My Shows List$/) do
+  expect(@page.my_shows_titles).to include(@show_info[:title])
 end

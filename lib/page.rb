@@ -6,14 +6,20 @@ module Page
 
 
   module ClassMethods
-    cattr_accessor :driver, :wait
+    cattr_accessor :driver, :driver_wrapper, :wait
 
     def displayed?
-      wait.until { identifier_element.displayed? }
+      raise "#{self} doesn't have any identifiers" if @identifiers.count.zero?
+      @identifiers.all? { |locators| wait.until { driver.find_element(locators).displayed? } }
     end
 
-    def identifier_element
-      raise 'Define #identifier_element method first'
+    def identifier(locators)
+      @identifiers ||= []
+      @identifiers << locators
+    end
+
+    def identifiers
+      @identifiers ||= []
     end
 
     def element(name, locators)
