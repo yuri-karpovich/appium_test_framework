@@ -1,0 +1,18 @@
+en:
+  main_menu:
+    shows: 'Shows'
+    statistics: 'Statistics'
+  add_show_page:
+    add_show_button: 'ADD SHOW'
+  show_info_frame:
+    add_show_button: 'ADD SHOW'
+  show_info_page:
+    set_watched_button: 'Set watched'
+  main_menu:
+    shows: 'Shows'
+    statistics: 'Statistics'
+  shows_page:
+    tab_name: 'SHOWS'
+  statistics_page:
+    statistics_text: 'Statistics'
+    shows_text: 'SHOWS'

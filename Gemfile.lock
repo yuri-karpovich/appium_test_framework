@@ -77,6 +77,7 @@ DEPENDENCIES
   activesupport
   appium_lib
   cucumber
+  i18n
   pry
   rspec
   rspec-expectations
