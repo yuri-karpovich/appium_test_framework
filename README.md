@@ -1,12 +1,11 @@
 # Overview
 This is a demo test framework for mobile applications testing. It's based on Ruby + Appium + Cucumber.
 
-
 # Requirements
  1. At least one **Android Virtual Device** should be created.
  2. **Android Emulator** should be installed and **started**
  2. **Appium** server should be installed and **started**
- 3. **Ruby** should be installed
+ 3. **Ruby** should be installed (was tested on 2.2.5p319 but should work with newer versions as well)
  4. **Bundler** gem should be installed
 
 # Installation 
