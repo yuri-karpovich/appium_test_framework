@@ -6,4 +6,4 @@ require './lib/mobile_page_object'
 require 'i18n'
 
 I18n.load_path = Dir['translations/*.yml']
-I18n.locale=:en
+I18n.locale    = ENV['APP_LOCALE'] || :en
