@@ -1,0 +1,4 @@
+<% common = "-r features --strict --backtrace" %>
+default:  <%= common %>
+log:      <%= common %> --out log/cucumber.log  --no-color --format progress
+html:     <%= common %> --format html --out log/cucumber.html  --format progress
